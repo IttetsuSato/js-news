@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { qiitaItemsSchema } from "@/schemas/qiita-item";
+import Link from "next/link";
 
 export default async function Home() {
   const items = qiitaItemsSchema.parse(
@@ -14,13 +16,15 @@ export default async function Home() {
 
   return (
     <main>
-      <h1 className="text-3xl text-blue-500">Hello</h1>
-      <Button variant="destructive">Bun!</Button>
-      {items.map((item) => (
-        <div key={item.id}>
-          <h2>{item.title}</h2>
-        </div>
-      ))}
+      <div className="flex flex-col gap-4">
+        {items.map((item) => (
+          <Card key={item.id}>
+            <Link href={item.url}>
+              <h2 className="text-lg">{item.title}</h2>
+            </Link>
+          </Card>
+        ))}
+      </div>
     </main>
   );
 }
