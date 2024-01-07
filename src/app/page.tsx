@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Typography } from "@/components/ui/typography";
@@ -21,7 +22,16 @@ export default async function Home() {
         {items.map((item) => (
           <Card key={item.id}>
             <Link href={item.url}>
-              <Typography variant="h2">{item.title}</Typography>
+              <div className="flex flex-col gap-4">
+                <Typography variant="h2">{item.title}</Typography>
+                <div className="flex gap-2">
+                  {item.tags.map((tag) => (
+                    <Badge variant="secondary" key={tag.name}>
+                      {tag.name}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
             </Link>
           </Card>
         ))}
