@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Typography } from "@/components/ui/typography";
 import { qiitaItemsSchema } from "@/schemas/qiita-item";
 import Link from "next/link";
 
@@ -20,7 +21,7 @@ export default async function Home() {
         {items.map((item) => (
           <Card key={item.id}>
             <Link href={item.url}>
-              <h2 className="text-lg">{item.title}</h2>
+              <Typography variant="h2">{item.title}</Typography>
             </Link>
           </Card>
         ))}
