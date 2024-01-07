@@ -1,0 +1,22 @@
+export type Item = {
+  rendered_body: [Object];
+  body: [Object];
+  coediting: [Object];
+  comments_count: [Object];
+  created_at: [Object];
+  group: [Object];
+  id: [Object];
+  likes_count: [Object];
+  private: [Object];
+  reactions_count: [Object];
+  stocks_count: [Object];
+  tags: [Object];
+  title: [Object];
+  updated_at: [Object];
+  url: [Object];
+  user: [Object];
+  page_views_count: [Object];
+  team_membership: [Object];
+  organization_url_name: [Object];
+  slide: [Object];
+};
