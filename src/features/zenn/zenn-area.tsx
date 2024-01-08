@@ -9,29 +9,29 @@ import {
 } from "@/components/ui/card";
 import { Date } from "@/components/ui/date";
 import { Typography } from "@/components/ui/typography";
-import { QiitaItem } from "@/schemas/qiita-item";
+import { ZennArticle } from "@/schemas/zenn-article";
 import Link from "next/link";
 import { FunctionComponent } from "react";
-import { qiitaBaseURL } from "../../../constants";
+import { zennBaseURL } from "../../../constants";
 
-export type QiitaAreaProps = {
-  items: QiitaItem[];
+export type ZennAreaProps = {
+  items: ZennArticle[];
 };
-export const QiitaArea: FunctionComponent<QiitaAreaProps> = ({ items }) => {
+export const ZennArea: FunctionComponent<ZennAreaProps> = ({ items }) => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex justify-between">
-        <Typography variant="h2">Qiita</Typography>
-        <Link href={qiitaBaseURL}>もっと見る</Link>
+        <Typography variant="h2">Zenn</Typography>
+        <Link href={zennBaseURL}>もっと見る</Link>
       </div>
       <div className="flex flex-col gap-4">
         {items.map((item) => (
           <Card key={item.id}>
-            <Link href={item.url}>
+            <Link href={new URL(item.path, zennBaseURL)}>
               <CardHeader>
                 <CardTitle>{item.title}</CardTitle>
                 <CardDescription>
-                  <Date date={item.created_at} format="yyyy/MM/dd" />
+                  <Date date={item.published_at} format="yyyy/MM/dd" />
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -39,10 +39,10 @@ export const QiitaArea: FunctionComponent<QiitaAreaProps> = ({ items }) => {
               </CardContent>
               <CardFooter>
                 <div className="flex gap-2">
-                  <div>{`${item.likes_count} likes`}</div>
-                  {item.tags.map((tag) => (
+                  <div>{`${item.liked_count} likes`}</div>
+                  {/* {item..map((tag) => (
                     <Badge key={tag.name}>{tag.name}</Badge>
-                  ))}
+                  ))} */}
                 </div>
               </CardFooter>
             </Link>
