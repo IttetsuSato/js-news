@@ -1,7 +1,7 @@
 import { QiitaArea } from "@/features/qiita/qiita-area";
 import { ZennArea } from "@/features/zenn/zenn-area";
 import { qiitaItemsSchema } from "@/schemas/qiita-item";
-import { zennArticlesSchema } from "@/schemas/zenn-article";
+import { zennArticlesSchema } from "@/schemas/zenn-articles";
 
 export default async function Home() {
   const qiitaArticles = qiitaItemsSchema.parse(
@@ -28,7 +28,7 @@ export default async function Home() {
     <main>
       <div className="container">
         <QiitaArea items={qiitaArticles} />
-        <ZennArea items={zennArticles.articles} />
+        <ZennArea zennArticles={zennArticles} />
       </div>
     </main>
   );

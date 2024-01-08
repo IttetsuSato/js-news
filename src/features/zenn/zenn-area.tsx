@@ -9,15 +9,18 @@ import {
 } from "@/components/ui/card";
 import { Date } from "@/components/ui/date";
 import { Typography } from "@/components/ui/typography";
-import { ZennArticle } from "@/schemas/zenn-article";
+import { ZennArticles } from "@/schemas/zenn-articles";
 import Link from "next/link";
 import { FunctionComponent } from "react";
 import { zennBaseURL } from "../../../constants";
 
 export type ZennAreaProps = {
-  items: ZennArticle[];
+  zennArticles: ZennArticles;
 };
-export const ZennArea: FunctionComponent<ZennAreaProps> = ({ items }) => {
+export const ZennArea: FunctionComponent<ZennAreaProps> = ({
+  zennArticles,
+}) => {
+  const items = zennArticles.articles;
   return (
     <div className="flex flex-col gap-4">
       <div className="flex justify-between">

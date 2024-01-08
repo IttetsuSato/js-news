@@ -12,18 +12,29 @@ export const zennArticleSchema = z.object({
   emoji: z.string(),
   is_suspending_private: z.boolean(),
   published_at: z.string(),
-  body_updated_at: z.string(),
+  body_updated_at: z.string().nullable(),
   source_repo_updated_at: z.string().nullable(),
   pinned: z.boolean(),
   path: z.string(),
+  body_html: z.string(),
+  og_image_url: z.string().nullable(),
+  toc: z.array(z.any()),
+  toc_enabled: z.boolean(),
+  should_noindex: z.boolean(),
+  scheduled_publish_at: z.string().nullable(),
+  can_send_badge: z.boolean(),
+  status: z.string(),
+  badges: z.array(z.any()),
+  is_mine: z.boolean(),
+  is_preview: z.boolean(),
+  current_user_liked: z.boolean(),
+  github_repository: z.any().nullable(),
   user: z.any(),
   publication: z.any().nullable(),
-});
-
-export const zennArticlesSchema = z.object({
-  articles: z.array(zennArticleSchema),
-  next_page: z.number(),
+  topics: z.array(z.any()),
+  comments: z.array(z.any()),
+  positive_comments_count: z.number(),
+  commented_users: z.array(z.any()),
 });
 
 export type ZennArticle = z.infer<typeof zennArticleSchema>;
-export type ZennArticles = z.infer<typeof zennArticlesSchema>;
