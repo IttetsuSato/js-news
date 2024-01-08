@@ -1,18 +1,9 @@
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Date } from "@/components/ui/date";
 import { Typography } from "@/components/ui/typography";
 import { ZennArticles } from "@/schemas/zenn-articles";
 import Link from "next/link";
 import { FunctionComponent } from "react";
 import { zennBaseURL } from "../../../constants";
+import { ZennItem } from "./zenn-item";
 
 export type ZennAreaProps = {
   zennArticles: ZennArticles;
@@ -29,27 +20,7 @@ export const ZennArea: FunctionComponent<ZennAreaProps> = ({
       </div>
       <div className="flex flex-col gap-4">
         {items.map((item) => (
-          <Card key={item.id}>
-            <Link href={new URL(item.path, zennBaseURL)}>
-              <CardHeader>
-                <CardTitle>{item.title}</CardTitle>
-                <CardDescription>
-                  <Date date={item.published_at} format="yyyy/MM/dd" />
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-col gap-4"></div>
-              </CardContent>
-              <CardFooter>
-                <div className="flex gap-2">
-                  <div>{`${item.liked_count} likes`}</div>
-                  {/* {item..map((tag) => (
-                    <Badge key={tag.name}>{tag.name}</Badge>
-                  ))} */}
-                </div>
-              </CardFooter>
-            </Link>
-          </Card>
+          <ZennItem key={item.id} slug={item.slug} />
         ))}
       </div>
     </div>

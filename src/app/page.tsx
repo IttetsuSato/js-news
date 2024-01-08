@@ -22,7 +22,6 @@ export default async function Home() {
       next: { revalidate: 600 },
     }).then((res) => res.json()),
   );
-  console.log({ articles: zennArticles });
 
   return (
     <main>
